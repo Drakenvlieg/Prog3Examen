@@ -1,0 +1,59 @@
+﻿@model MVCEFOpdracht.Models.Component
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Component - Details</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categorie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatasheetLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatasheetLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aankoopprijs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aankoopprijs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aantal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aantal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Bewerk", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Terug naar het overzicht", "Index")
+</p>

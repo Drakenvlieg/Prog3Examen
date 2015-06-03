@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MVCEFOpdracht.Models.Component>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Overzicht elektronische componenten</h2>
+
+
+
+<p>
+    @Html.ActionLink("Voeg nieuwe toe", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Zoek een component bij naam: @Html.TextBox("SearchString")
+        <input type="submit" value="Zoek" />
+    </p>
+}
+
+@using (Html.BeginForm())
+    {
+        <p>
+            Of selecteer een categorie: @Html.DropDownList("SelectedCategory", "Alle")
+            <input type="submit" value="Filter" />
+        </p>
+    }
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Categorie", "Index", new { sortOrder = ViewBag.CategorieSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Naam", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            Datasheetlink
+        </th>
+        <th>
+            Aankoopprijs
+        </th>
+        <th>
+            Aantal
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatasheetLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aankoopprijs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aantal)
+            </td>
+            <td>
+                @Html.ActionLink("Bewerk", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Verwijder", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
